@@ -17,7 +17,7 @@ const Home = () => {
     // }
 
     const [blogs, setBlogs] = useState([
-        { title: "Chocko", body: "lorem ipsum...", author: "Jojo", id: 1 },
+        { title: "Note From Inspiration", body: "don’t be<br>like the girl<br>for whatever reason<br>who rejects the hands<br>of her heart’s desire<br>when I reach for you<br>waste no time<br>flirting with man’s<br>two most seductive temptresses:<br>distraction and procrastination;<br>reach back immediately<br>and embrace me fully<br>like this moment<br>is the only one<br>that will ever exist<br>just like you<br>I am curious too<br>to discover<br>what we’ll create", author: "September Child", id: 1 },
         { title: "Dracko", body: "lorem ipsum...", author: "Siri", id: 2 },
         { title: "Top gun shotta", body: "lorem ipsum...", author: "Pana", id: 3 },
     ])
@@ -34,31 +34,11 @@ const Home = () => {
         console.log("print out use effect");
     }, [name]);
 
-    // const handleClickAgain = (name) => {
-    //     console.log('hello ' + name);
-    // }
-
     return (
         <div className="home">
-            {/* <h2>Homepage</h2> */}
-            {/* <p>{name} has {age} thousand balance</p> */}
-            {/* <button onClick={handleClick}>Click Me</button> */}
-            {/* <button onClick={() => handleClickAgain('mario')
-            }>Click Me Again</button> */}
-
-            {/* OUtputting list in React */}
-            {/* {blogs.map((blog) => (
-                <div className="blog-preview" key={blog.id}>
-                    <h2> {blog.title} </h2>
-                    <p>Written by {blog.author} </p>
-                </div> */}
-            {/* ))}
-        </div> */}
-
             {/* using props -> key mapping  */}
-            <BlogList blogs={blogs} type="Musings" handleDelete={handleDelete} />
-            <button onClick={() => setName('luigi')}>change name</button>
-            <p>{name}</p>
+            <BlogList blogs={blogs} type="Musings" />
+
         </div>
     );
 }
