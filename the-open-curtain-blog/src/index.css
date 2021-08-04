@@ -50,3 +50,21 @@
   color: #E3170A;
   margin-bottom: 8px;
 }
+
+.blog-preview a{
+  text-decoration: none;
+}
+
+.blog-details h2 {
+  font-size: 20px;
+  color: #E3170A;
+  margin-bottom: 10px;
+}
+
+.blog-details p{
+  font-weight: bold;
+}
+
+.blog-details div {
+  margin: 20px 0;
+}
