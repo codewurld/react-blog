@@ -2,7 +2,7 @@ import React from "react";
 
 // using/creating props 
 
-const BlogList = ({ blogs, title, type, handleDelete }) => {
+const BlogList = ({ blogs, title, type }) => {
 
 
     return (
@@ -12,7 +12,7 @@ const BlogList = ({ blogs, title, type, handleDelete }) => {
                 <div className="blog-preview" key={blog.id}>
                     <h2> {blog.title} </h2>
                     <p>Written by {blog.author} </p>
-                    <button onClick={() => handleDelete(blog.id)}>Read</button>
+                    {/* <button onClick={() => handleDelete(blog.id)}>Read</button> */}
                 </div>
             ))}
         </div>

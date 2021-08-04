@@ -16,28 +16,36 @@ const Home = () => {
 
     // }
 
-    const [blogs, setBlogs] = useState([
-        { title: "Note From Inspiration", body: "don’t be<br>like the girl<br>for whatever reason<br>who rejects the hands<br>of her heart’s desire<br>when I reach for you<br>waste no time<br>flirting with man’s<br>two most seductive temptresses:<br>distraction and procrastination;<br>reach back immediately<br>and embrace me fully<br>like this moment<br>is the only one<br>that will ever exist<br>just like you<br>I am curious too<br>to discover<br>what we’ll create", author: "September Child", id: 1 },
-        { title: "Dracko", body: "lorem ipsum...", author: "Siri", id: 2 },
-        { title: "Top gun shotta", body: "lorem ipsum...", author: "Pana", id: 3 },
-    ])
+    const [blogs, setBlogs] = useState(null)
+    const [error, setError] = useState(null);
+    // const [isPending, setIsPending] = useState(true);
 
-    const [name, setName] = useState('mario')
-
-    const handleDelete = (id) => {
-        const newBlogs = blogs.filter(blog => blog.id !== id);
-        setBlogs(newBlogs);
-
-    }
-
+    // useEffect to fetch data from json server
+    // line 27 - 28 handles fetch error based on response object
     useEffect(() => {
-        console.log("print out use effect");
-    }, [name]);
+        fetch('http://localhost:8000/blogs')
+            .then(res => {
+                if (!res.ok) {
+                    throw Error('oops, could not find the data you requested for')
+                }
+                return res.json();
+            })
+            .then(data => {
+                setBlogs(data);
+                // setIsPending(false);
+                setError(null);
+            })
+            .catch((err) => {
+                setError(err.message);
+            })
+    }, []);
 
     return (
         <div className="home">
+            {/* {isPending && <div>Just a sec...</div>} */}
             {/* using props -> key mapping  */}
-            <BlogList blogs={blogs} type="Musings" />
+            {error && <div> {error} </div>}
+            {blogs && <BlogList blogs={blogs} type="Musings" onClick={blogs.body} />}
 
         </div>
     );
